@@ -27,3 +27,14 @@ input {
   border: 0;
   padding: 0;
 }
+@media(max-width:800px) {
+  #grid {
+    display:block;
+  }
+  h1 {
+    border-bottom: none;
+  }
+  ol {
+    border-right: none;
+  }
+}

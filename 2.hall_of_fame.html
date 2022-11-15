@@ -4,9 +4,45 @@
     <meta charset="utf-8">
     <title>왁등공신 - 명예의 전당</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script><!-- chart -->
+    <script type="text/javascript">
+      google.charts.load("current", {packages:['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Element", "스택", { role: "style" } ],
+          ["Oncepop", 4, "#b87333"],
+          ["리아", 5, "silver"],
+          ["mr.blank", 6, "gold"],
+          ["보글보글알쿵", 6, "color: #e5e4e2"]
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                        { calc: "stringify",
+                          sourceColumn: 1,
+                          type: "string",
+                          role: "annotation" },
+                        2]);
+
+        var options = {
+          title: "명예의 전당 TOP 4",
+          width: 600,
+          height: 400,
+          bar: {groupWidth: "95%"},
+          legend: {position: "none"},
+          vAxis: {
+            minValue: 2,
+            ticks: [2,3,4,5,6]
+          },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(view, options);
+    }
+    </script><!-- chart -->
   </head>
   <body>
-    <h1>명예의 전당</h1>
+    <h1><a href="index.html"><img src="wakgong_logo.png" alt="Logo" width="250px" height="100px"></a></h1>
     <div id="grid">
       <script type="text/javascript">
         var year = [
@@ -32,14 +68,18 @@
         </ul>
       </div>
     <div id="article">
-      <script type="text/javascript">
-        var famelist = ['보글보글알쿵 6','mr.blank 6','리아 5','Oncepop 4','놀란 4','개죽개죽 4','주닝요 4','벨리엘 3','핵텐션 3','beebme 3','퍼브 3','옥스 3','훈식스 3','소주무라 3','시미순 3','김반푼이 2','김민채 2','뚱이뿌우 2','도모토 2','데나임 2','밤빛달 2','시준이아빠 2','카키드 2','리즈 2','뽀아모레 2','꿀딴지투입 2','홍첨지 2','김데모 2','사라져빔 2','모크렌 2','남간 2','정글벨 2','아코스제로 2','노비열심이 2','최선비 2','베르니 2','킴카멘 2','n년산편노예 2']
+      <div id="columnchart_values" style="width: 600px; height: 50px;"></div><!-- chart -->
+       <script type="text/javascript">
+        var famelist = ['보글보글알쿵 (6) [스택]','mr.blank (6)','리아 (5)','Oncepop (4)','놀란 (4)','개죽개죽 (4)','주닝요 (4)','벨리엘 (3)','핵텐션 (3)','beebme (3)','퍼브 (3)',
+        '옥스 (3)','훈식스 (3)','소주무라 (3)','시미순 (3)','김반푼이 (2)','김민채 (2)','뚱이뿌우 (2)','도모토 (2)','데나임 (2)','밤빛달 (2)','시준이아빠 (2)','카키드 (2)','리즈 (2)',
+        '뽀아모레 (2)','꿀딴지투입 (2)','홍첨지 (2)','김데모 (2)','사라져빔 (2)','모크렌 (2)','남간 (2)','정글벨 (2)','아코스제로 (2)','노비열심이 (2)','최선비 (2)','베르니 (2)','킴카멘 (2)',
+        'n년산편노예 (2)']
       </script>
       <ol>
         <script type="text/javascript">
           var i = 0;
           while(i < famelist.length){
-            document.write('<li>'+famelist[i]+'</a></li>');
+            document.write('<li>'+famelist[i]+'</a></li><br>');
             i = i + 1;
           }
         </script>
